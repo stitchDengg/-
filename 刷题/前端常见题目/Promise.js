@@ -10,6 +10,7 @@ class MyPromise {
 
     try {
       // 将定义的好的函数传给回调函数
+      // !关键点1 需要修改this指向
       handle(this._resolve.bind(this), this._resolve.bind(this));
     } catch (err) {
       this._reject(err);
@@ -27,6 +28,9 @@ class MyPromise {
       }
     };
     // ? 没懂
+    // ! 是一个执行顺序问题，如果有Promise里面的实例直接执行的case，这个时候状态会被直接改变，不会触发then函数里把函数加入数组的逻辑
+    // ! 但是如果是用settmieout，.then()会先执行 再执行这个run()
+    // !关键点2 使用setTimeout去调整执行顺序，确保异步任务后面执行
     setTimeout(run,0)
   }
 
