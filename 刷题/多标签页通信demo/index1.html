@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tab 1</title>
+</head>
+<body>
+  <h1>Tab 1</h1>
+  <button id="sendButton">Send Message</button>
+
+  <script>
+    const channel = new BroadcastChannel('myChannel');
+
+    const sendButton = document.getElementById('sendButton');
+    sendButton.addEventListener('click', function() {
+      channel.postMessage('Hello from tab 1');
+    });
+
+    channel.onmessage = function(event) {
+      console.log('Received message in tab 1:', event.data);
+    };
+  </script>
+</body>
+</html>
