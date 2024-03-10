@@ -17,4 +17,5 @@ function thousandSplit(n) {
   return result;
 }
 
+
 console.log(thousandSplit(1234567))
