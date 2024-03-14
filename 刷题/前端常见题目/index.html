@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="file" id="file">
+
+  <script>
+    const fileDom = document.getElementById('file');
+    // 上传文件时触发
+    fileDom.addEventListener('change', function (e) {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const data = e.target.result;
+        console.log(data);
+      }
+      reader.readAsDataURL(file);
+    });
+  </script>
+</body>
+</html>

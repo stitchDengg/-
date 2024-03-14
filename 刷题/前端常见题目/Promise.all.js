@@ -1,20 +1,23 @@
 
 
 Promise.Myall = function (promises) {
-  if(!Array.isArray(promises)) {
-    return;
-  }
-  let resArr = [];
-  const size = promises.length;
-  let count = 0;
   return new Promise((reslove,reject) => {
-    for(let i = 0;i < size; i ++) {
-      promises[i].then(res => {
+    if(!Array.isArray(promises)) {
+      throw new Error('promises must be an array');
+    }
+    const size = promises.length;
+    let resArr = [];
+    let count = 0;  
+    for(let i =0;i < promises.length;i++) {
+      Promise.resolve(promises[i]).then(res => {
+        console.log(res);
         resArr[i] = res;
-        count ++;
-        if(count === size) reslove(resArr);
+        count++;
+        if(count === size) {
+          return reslove(resArr);
+        }
       },err => {
-        reject(err);
+        return reject(err);
       })
     }
   })
@@ -23,15 +26,13 @@ Promise.Myall = function (promises) {
 
 const p1 = new Promise((res) => {
   setTimeout(() => {
-    console.log(1)
-    throw new Error(123123)
+    res(1)
   },1000)
 })
 
 
 const p2 = new Promise((res) => {
   setTimeout(() => {
-    console.log(2)
     res(2)
   },2000)
 })
@@ -39,7 +40,6 @@ const p2 = new Promise((res) => {
 
 const p3 = new Promise((res) => {
   setTimeout(() => {
-    console.log(3)
     res(3)
   },3000)
 })

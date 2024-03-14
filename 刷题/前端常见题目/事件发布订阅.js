@@ -26,6 +26,16 @@ class EventBus {
       });
     }
   }
+
+  // 指执行一次然后销毁
+  once(eventName,fn) {
+    const onceFn = () => {
+      fn();
+      delete this.eventArr[eventName];
+    }
+
+    this.subscribe(eventName,onceFn);
+  }
 }
 
 // 创建全局事件总线对象
@@ -42,6 +52,10 @@ const callback2 = (data) => {
 // 订阅事件
 eventBus.subscribe("event1", callback1);
 eventBus.subscribe("event1", callback2);
+
+eventBus.once("event2", () => {
+  console.log("Callback 3");
+} );
 
 // 发布事件
 eventBus.publish("event1", "Hello, world!");

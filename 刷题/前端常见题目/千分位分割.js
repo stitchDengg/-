@@ -3,7 +3,7 @@
 function thousandSplit(n) {
   const parts = n.toString().split('.');
   let numPart = parts[0];
-  let decimaPart = parts[1] ? parts[1] + '.' : '';
+  let decimaPart = parts[1] ?  '.' + parts[1] : '';
   let result = '', count = 0;
   for (i = numPart.length - 1; i >= 0; i--) {
     //!注意不是 +=
@@ -14,8 +14,8 @@ function thousandSplit(n) {
       result = ',' + result;
     }
   }
-  return result;
+  return result +  decimaPart;
 }
 
 
-console.log(thousandSplit(1234567))
+console.log(thousandSplit(1234567.12312))
