@@ -14,3 +14,12 @@ Function.prototype.myBind = function (context) {
     )
   }
 }
+
+function test (a, b) {
+  console.log(this, a, b);
+}
+
+let newFn = test.myBind({name: 'test'}, 1);
+
+
+new newFn();

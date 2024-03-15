@@ -1,10 +1,10 @@
-for (var i = 1; i <= 5; i++) {
-  (function (j) {
-    setTimeout(function timer() {
-      console.log(j);
-    }, j * 1000);
-  })(i);
-}
+// for (var i = 1; i <= 5; i++) {
+//   (function (j) {
+//     setTimeout(function timer() {
+//       console.log(j);
+//     }, j * 1000);
+//   })(i);
+// }
 
 /* 
 
@@ -16,15 +16,34 @@ console.log(counter()); // 2
 
 console.log(counter());​​ // 3
 */
-let counter = (
-  function () {
-    var count = 0;
-    return function () {
-      return ++count;
-    };
+// let counter = (
+//   function () {
+//     var count = 0;
+//     return function () {
+//       return ++count;
+//     };
+//   }
+// )()
+
+
+// console.log(counter()); // 1
+// console.log(counter()); // 2
+
+
+
+function sum () {
+  let a = 1;
+  return {
+    add() {
+      a ++;
+    },
+    get() {
+      return a;
+    }
   }
-)()
+}
 
-
-console.log(counter()); // 1
-console.log(counter()); // 2
+let a = sum();
+a.add();
+a.add();
+console.log(a.get()); // 3

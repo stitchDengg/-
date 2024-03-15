@@ -9,6 +9,7 @@ Promise.Myall = function (promises) {
     let resArr = [];
     let count = 0;  
     for(let i =0;i < promises.length;i++) {
+      // 需要把每个promise数组的元素的转化为promise对象
       Promise.resolve(promises[i]).then(res => {
         console.log(res);
         resArr[i] = res;
