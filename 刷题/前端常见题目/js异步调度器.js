@@ -30,6 +30,7 @@ class Scheduler {
       await task();
       task.resolve();
       this.running--;
+      // !核心，执行完立刻执行队列其他任务
       const fn = this.queue.shift();
       fn && this.run(fn);
     }
@@ -48,5 +49,3 @@ addTask(1000, 1);
 addTask(500, 2);
 addTask(300, 3);
 addTask(1000, 4);
-
-
