@@ -1,15 +1,26 @@
-function baseLength(n) {
-  n = n.toString();
-  let index = n.indexOf('.');
-  return index === -1 ? 0 : n.length - index - 1;
+let a = '9012312321312312'
+let b = '1231241234141412499999'
+
+// !需要进位
+function bigNumberCompute(a, b) {
+  let maxLength = Math.max(a.length, b.length);
+  a = a.padStart(maxLength, '0');
+  b = b.padStart(maxLength, '0');
+
+  let t = 0;
+  let f = 0; //进位
+  let sum = '';
+  for (let i = maxLength - 1; i >= 0; i --) {
+    t = parseInt(a[i]) + parseInt(b[i]) + f;
+    f = Math.floor(t / 10);
+    console.log(t % 10,f)
+    sum += t % 10;
+  }
+  // 考虑结尾情况
+  if (f === 1) {
+    sum = '1' + sum;
+  }
+  return sum;
 }
 
-function bigNumberSum(a, b) {
-  const baseLen = Math.max(baseLength(a), baseLength(b));
-  const pow = Math.pow(10, baseLen);
-  const res = a * pow + b * pow;
-  return Number(res / pow);
-}
-
-
-console.log(bigNumberSum(1.22333,1.0323))
+console.log(bigNumberCompute(a, b));

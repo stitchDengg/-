@@ -25,16 +25,17 @@ function arrToTree (list) {
   list.forEach(item => {
     helpObj[item.id] = item;
   })
-
   list.forEach(item => {
     if (helpObj[item.parent_id]) {
+      // 如果有父节点
       (helpObj[item.parent_id].children || (helpObj[item.parent_id].children = [])).push(item);
     }else {
       res.push(item);
     }
   })
+  console.log(helpObj)
   return res;
 }
-
-console.log(arrToTree(list));
+arrToTree(list)
+// console.log(arrToTree(list));
 
