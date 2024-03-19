@@ -3,6 +3,7 @@
 function thousandSplit(n) {
   const parts = n.toString().split('.');
   let numPart = parts[0];
+  // 处理小数部分
   let decimaPart = parts[1] ?  '.' + parts[1] : '';
   let result = '', count = 0;
   for (i = numPart.length - 1; i >= 0; i--) {

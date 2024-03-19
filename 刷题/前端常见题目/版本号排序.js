@@ -10,8 +10,8 @@ function compareVersion(arr) {
     let length = Math.max(aArr, bArr);
 
     while (i < length) {
-      let s1 = aArr[i];
-      let s2 = bArr[i];
+      let s1 = parseInt(aArr[i]);
+      let s2 = parseInt(bArr[i]);
       i++;
       if (s1 === s2) {
         continue;

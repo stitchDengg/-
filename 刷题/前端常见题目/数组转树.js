@@ -18,7 +18,7 @@ let list =  [
 ]
 
 
-// !高频考点
+// !高频考点 非递归 空间换时间
 function arrToTree (list) {
   let helpObj = {};
   let res = [];
@@ -33,9 +33,12 @@ function arrToTree (list) {
       res.push(item);
     }
   })
-  console.log(helpObj)
   return res;
 }
-arrToTree(list)
+
 // console.log(arrToTree(list));
+
+
+
+console.log(arrToTree(list))
 

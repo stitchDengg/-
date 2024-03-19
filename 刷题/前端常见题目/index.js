@@ -1,4 +1,4 @@
-window.name = 'ByteDance';
+globalThis.name = 'ByteDance';
 function A (){
   this.name = 123;
 }
