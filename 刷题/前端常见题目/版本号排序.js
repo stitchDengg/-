@@ -7,13 +7,13 @@ function compareVersion(arr) {
     const aArr = a.split('.');
     const bArr = b.split('.');
     let i = 0;
-    let length = Math.max(aArr, bArr);
+    let length = Math.max(aArr.length, bArr.length);
 
     while (i < length) {
       let s1 = parseInt(aArr[i]);
       let s2 = parseInt(bArr[i]);
-      i++;
       if (s1 === s2) {
+        i++;
         continue;
       }
       if (s1 === undefined || s2 === undefined) {

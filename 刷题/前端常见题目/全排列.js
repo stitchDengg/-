@@ -1,5 +1,6 @@
 function allSort(arr) {
   const result = [];
+  // 递归出口
   if (arr.length === 1) {
     return [arr];
   } else {
